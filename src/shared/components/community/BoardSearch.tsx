@@ -15,6 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { usePathname } from 'next/navigation';
 
 import { useSearchParams, useRouter } from 'next/navigation';
 import dayjs from 'dayjs';
@@ -26,7 +27,7 @@ interface BoardSearchProps {
 function BoardSearch({ className }: BoardSearchProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
-
+  const pathname = usePathname();
   //날짜 - 초기값을 undefined로 설정하여 hydration 문제 방지
   const [date, setDate] = useState<DateRange>({
     from: searchParams.get('date') ? dayjs(searchParams.get('date')).toDate() : dayjs().toDate(),
@@ -40,12 +41,17 @@ function BoardSearch({ className }: BoardSearchProps) {
 
   const handleSearch = () => {
     router.push(
-      `/community/notice?date=${dayjs(date?.from).format('YYYY-MM-DD')}&dateTo=${dayjs(date?.to).format('YYYY-MM-DD')}${text && `&text=${text}`}&size=${size}`
+      `${pathname}?date=${dayjs(date?.from).format('YYYY-MM-DD')}&dateTo=${dayjs(date?.to).format('YYYY-MM-DD')}${text && `&text=${text}`}&size=${size}`
     );
   };
 
   return (
-    <div className={cn('flex w-full items-center justify-between py-6', className)}>
+    <div
+      className={cn(
+        'mx-auto flex w-full max-w-[1200px] items-center justify-between py-6',
+        className
+      )}
+    >
       {/* Left: Search Inputs */}
       <div className="flex items-center gap-2">
         {/* Title Input */}
@@ -94,7 +100,7 @@ function BoardSearch({ className }: BoardSearchProps) {
 
         {/* Search Button */}
         <button
-          className="flex h-12 items-center justify-center gap-2 rounded-md border border-[#1a1c23] bg-white px-6 transition-colors hover:bg-gray-50"
+          className="flex h-12 cursor-pointer items-center justify-center gap-2 rounded-md border border-[#1a1c23] bg-white px-6 transition-colors hover:bg-gray-50"
           onClick={handleSearch}
         >
           <Search className="size-5 text-[#1a1c23]" />

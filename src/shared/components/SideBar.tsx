@@ -34,10 +34,10 @@ const SideBar = ({ className }: { className?: string }) => {
   const pathname = usePathname();
   console.log(`pathname =>`, pathname);
   const menuItems: MenuItem[] = [
-    { title: '마이페이지', icon: <User className="size-6" />, href: '/mypage' },
+    { title: '마이페이지', icon: <User className="size-5" />, href: '/mypage' },
     {
       title: '클럽안내',
-      icon: <Home className="size-6" />,
+      icon: <Home className="size-5" />,
       href: '/club',
       childrenItems: [
         { subTitle: '클럽소개', href: '/club/intro' },
@@ -49,7 +49,7 @@ const SideBar = ({ className }: { className?: string }) => {
     },
     {
       title: '코스안내',
-      icon: <Flag className="size-6" />,
+      icon: <Flag className="size-5" />,
       href: '/course',
       childrenItems: [
         { subTitle: '코스 소개', href: '/course/intro' },
@@ -59,7 +59,7 @@ const SideBar = ({ className }: { className?: string }) => {
     },
     {
       title: '이용안내',
-      icon: <Users className="size-6" />,
+      icon: <Users className="size-5" />,
       href: '/guide',
       childrenItems: [
         { subTitle: '이용 정책', href: '/guide' },
@@ -70,14 +70,14 @@ const SideBar = ({ className }: { className?: string }) => {
     },
     {
       title: '인터넷예약',
-      icon: <Calendar className="size-6" />,
+      icon: <Calendar className="size-5" />,
       href: '/reservation',
       childrenItems: [{ subTitle: '골프 예약', href: '/reservation/method' }],
       onOff: pathname.includes('/reservation'),
     },
     {
       title: '커뮤니티',
-      icon: <MessageSquare className="size-6" />,
+      icon: <MessageSquare className="size-5" />,
       href: '/community',
       childrenItems: [
         { subTitle: '공지사항', href: '/community/notice' },
@@ -113,16 +113,20 @@ const SideBar = ({ className }: { className?: string }) => {
           {category.map((item) => (
             <li key={item.title}>
               <div className="flex items-center justify-between gap-2">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 font-semibold">
                   {item.icon}
                   {item.title}
-                  {item.href}
                 </div>
-                <Button variant="ghost" size="icon" onClick={() => changeCategory(item)}>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="cursor-pointer"
+                  onClick={() => changeCategory(item)}
+                >
                   {item.onOff ? (
-                    <ChevronUp className="size-6" />
+                    <ChevronUp className="size-5" />
                   ) : (
-                    <ChevronDown className="size-6" />
+                    <ChevronDown className="size-5" />
                   )}
                 </Button>
               </div>
@@ -133,7 +137,13 @@ const SideBar = ({ className }: { className?: string }) => {
                       key={childItem.subTitle}
                       className={`px-3 py-2 ${pathname === childItem.href ? 'bg-gray-100' : ''}`}
                     >
-                      <Link href={childItem.href} className="text-gray-600 hover:text-gray-900">
+                      <Link
+                        href={childItem.href}
+                        className={cn(
+                          'inline-block w-full text-gray-600 hover:text-gray-900',
+                          pathname === childItem.href ? 'font-bold' : ''
+                        )}
+                      >
                         {childItem.subTitle}
                       </Link>
                     </li>

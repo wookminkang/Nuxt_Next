@@ -24,7 +24,7 @@ async function BoardList({ searchParams }: { searchParams: Promise<NOTICE_PARMAS
   // console.log(`data =>`, data);
 
   return (
-    <div className={cn('w-full')}>
+    <div className={cn('mx-auto w-full max-w-[1200px]')}>
       {/* Table Header */}
       <div className="flex border-t-[3px] border-b border-t-[#1a1c23] border-b-[#e5e7eb] bg-white px-4 py-5 text-[15px] font-bold text-[#1a1c23]">
         <div className="w-20 text-center">번호</div>

@@ -8,18 +8,16 @@ type BOARD_PARMAS = {
   size?: string;
 };
 
-export default async function CommunityNoticePage({
+export default function CommunityEventPage({
   searchParams,
 }: {
   searchParams: Promise<BOARD_PARMAS>;
 }) {
   return (
     <div>
-      <h1>Community Notice</h1>
+      <h1>Community Event</h1>
 
-      {/* 검색 */}
       <BoardSearch />
-      {/* 리스트 */}
       <BoardList searchParams={searchParams} />
     </div>
   );
