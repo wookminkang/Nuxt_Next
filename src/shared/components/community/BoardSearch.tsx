@@ -1,9 +1,9 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { Calendar as CalendarIcon, ChevronDown, Search } from 'lucide-react';
-import { useState } from 'react';
-import { addDays, format } from 'date-fns';
+import { Calendar as CalendarIcon, Search } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { format } from 'date-fns';
 import { ko } from 'date-fns/locale';
 import { DateRange } from 'react-day-picker';
 import { Calendar } from '@/components/ui/calendar';
@@ -24,29 +24,28 @@ interface BoardSearchProps {
 }
 
 function BoardSearch({ className }: BoardSearchProps) {
-  //날짜
-  const [date, setDate] = useState<DateRange | undefined>({
-    from: dayjs().toDate(),
-    to: dayjs().toDate(),
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  //날짜 - 초기값을 undefined로 설정하여 hydration 문제 방지
+  const [date, setDate] = useState<DateRange>({
+    from: searchParams.get('date') ? dayjs(searchParams.get('date')).toDate() : dayjs().toDate(),
+    to: searchParams.get('dateTo') ? dayjs(searchParams.get('dateTo')).toDate() : dayjs().toDate(),
   });
 
   //검색어
-  const [text, setText] = useState<string>('');
+  const [text, setText] = useState<string>(searchParams.get('text') || '');
   //노출개수
-  const [size, setSize] = useState<string>('10');
-
-
-  const router = useRouter();
-
-
+  const [size, setSize] = useState<string>(searchParams.get('size') || '10');
 
   const handleSearch = () => {
-    router.push(`/community/notice?date=${dayjs(date?.from).format('YYYY-MM-DD')}&dateTo=${dayjs(date?.to).format('YYYY-MM-DD')}${text && `&text=${text}`}&size=${size}`);
-    setText('')
-  }
+    router.push(
+      `/community/notice?date=${dayjs(date?.from).format('YYYY-MM-DD')}&dateTo=${dayjs(date?.to).format('YYYY-MM-DD')}${text && `&text=${text}`}&size=${size}`
+    );
+  };
 
   return (
-    <div className={cn('flex items-center justify-between w-full py-6', className)}>
+    <div className={cn('flex w-full items-center justify-between py-6', className)}>
       {/* Left: Search Inputs */}
       <div className="flex items-center gap-2">
         {/* Title Input */}
@@ -94,7 +93,10 @@ function BoardSearch({ className }: BoardSearchProps) {
         </Popover>
 
         {/* Search Button */}
-        <button className="flex h-12 items-center justify-center gap-2 rounded-md border border-[#1a1c23] bg-white px-6 transition-colors hover:bg-gray-50" onClick={handleSearch}>
+        <button
+          className="flex h-12 items-center justify-center gap-2 rounded-md border border-[#1a1c23] bg-white px-6 transition-colors hover:bg-gray-50"
+          onClick={handleSearch}
+        >
           <Search className="size-5 text-[#1a1c23]" />
           <span className="text-[15px] font-bold text-[#1a1c23]">조회</span>
         </button>
@@ -103,8 +105,8 @@ function BoardSearch({ className }: BoardSearchProps) {
       {/* Right: Display Count Selector */}
       <div className="flex items-center gap-4">
         <span className="text-[15px] text-[#4b5563]">노출개수</span>
-        <Select defaultValue={size} onValueChange={setSize}>
-          <SelectTrigger className="w-[100px] h-10 border-[#e5e7eb] focus:ring-0 focus:ring-offset-0 text-[15px] font-bold text-[#1a1c23]">
+        <Select value={size} onValueChange={setSize}>
+          <SelectTrigger className="h-10 w-[100px] border-[#e5e7eb] text-[15px] font-bold text-[#1a1c23] focus:ring-0 focus:ring-offset-0">
             <SelectValue placeholder="선택" />
           </SelectTrigger>
           <SelectContent>
