@@ -34,10 +34,10 @@ const SideBar = ({ className }: { className?: string }) => {
   const pathname = usePathname();
   console.log(`pathname =>`, pathname);
   const menuItems: MenuItem[] = [
-    { title: '마이페이지', icon: <User className="size-5" />, href: '/mypage' },
+    { title: '마이페이지', icon: <User className="size-5 mr-[2px]" />, href: '/mypage' },
     {
       title: '클럽안내',
-      icon: <Home className="size-5" />,
+      icon: <Home className="size-5 mr-[2px]" />,
       href: '/club',
       childrenItems: [
         { subTitle: '클럽소개', href: '/club/intro' },
@@ -49,7 +49,7 @@ const SideBar = ({ className }: { className?: string }) => {
     },
     {
       title: '코스안내',
-      icon: <Flag className="size-5" />,
+      icon: <Flag className="size-5 mr-[2px]" />,
       href: '/course',
       childrenItems: [
         { subTitle: '코스 소개', href: '/course/intro' },
@@ -59,7 +59,7 @@ const SideBar = ({ className }: { className?: string }) => {
     },
     {
       title: '이용안내',
-      icon: <Users className="size-5" />,
+      icon: <Users className="size-5 mr-[2px]" />,
       href: '/guide',
       childrenItems: [
         { subTitle: '이용 정책', href: '/guide' },
@@ -70,14 +70,14 @@ const SideBar = ({ className }: { className?: string }) => {
     },
     {
       title: '인터넷예약',
-      icon: <Calendar className="size-5" />,
+      icon: <Calendar className="size-5 mr-[2px]" />,
       href: '/reservation',
       childrenItems: [{ subTitle: '골프 예약', href: '/reservation/method' }],
       onOff: pathname.includes('/reservation'),
     },
     {
       title: '커뮤니티',
-      icon: <MessageSquare className="size-5" />,
+      icon: <MessageSquare className="size-5 mr-[2px]" />,
       href: '/community',
       childrenItems: [
         { subTitle: '공지사항', href: '/community/notice' },
