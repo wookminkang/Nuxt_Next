@@ -19,7 +19,7 @@ import Image from 'next/image';
 import { FormSchema } from '@/shared/utils/validators';
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
-
+import Link from 'next/link';
 const formSchema = z.object({
   id: FormSchema.id,
   password: FormSchema.password,
@@ -41,7 +41,6 @@ export const Login = () => {
       password: data.password,
       remember
     }
-    console.log(postVar);
   };
 
 
@@ -101,6 +100,8 @@ export const Login = () => {
           <Button type="submit" className="h-[48px] cursor-pointer">
             로그인
           </Button>
+
+          <div className="text-sm text-center">계정이 없으신가요? <Link href="/agreement" className="underline cursor-pointer">회원가입</Link></div>
         </form>
       </Form>
     </div>

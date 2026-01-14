@@ -61,4 +61,5 @@ export const Masker = {
 export const FormSchema = {
   id: z.string().min(4, '아이디를 입력해주세요.'),
   password: z.string().refine(isPassword, '비밀번호 형식이 올바르지 않습니다.'),
+  name: z.string().min(2, '이름을 입력해주세요.'),
 }
