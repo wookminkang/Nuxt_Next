@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import axiosInstance from '@/shared/api/axios-instance';
 import { community } from '@/shared/api/community';
+import { useState } from 'react';
 
 
 // export const useBoardQuery = () => {
@@ -35,3 +36,4 @@ export const useBoardQuery = {
     return [`${boardTitle}`, 'detail', id]
   },
 }
+

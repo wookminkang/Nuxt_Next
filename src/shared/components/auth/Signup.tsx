@@ -30,10 +30,23 @@ export const Signup = () => {
   });
 
 
+  /**
+   * 회원가입 정보 제출
+   */
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     console.log(data);
   };
 
+
+  /**
+   * 아이디 중복체크
+   */
+  const idCheck = async() =>{
+    const postVar = {
+      id: form.getValues('id'),
+    }
+    console.log(postVar);
+  }
 
   return (
     <div className="w-full max-w-sm">
@@ -47,13 +60,18 @@ export const Signup = () => {
               <FormItem>
                 <FormLabel>아이디</FormLabel>
                 <FormControl>
-                  <Input
-                    type="text"
-                    className="h-[48px]"
-                    autoComplete="off"
-                    placeholder="아이디를 입력해주세요"
-                    {...field}
-                  />
+                  <div className="flex gap-2">
+                    <Input
+                      type="text"
+                      className="h-[48px]"
+                      autoComplete="off"
+                      placeholder="아이디를 입력해주세요"
+                      {...field}
+                    />
+                    <Button type="button" variant="outline" className="h-[48px] cursor-pointer" onClick={idCheck}>
+                      중복확인
+                    </Button>
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
