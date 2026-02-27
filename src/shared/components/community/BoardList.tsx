@@ -1,7 +1,7 @@
 "use client"
 
 import { cn } from '@/lib/utils';
-import { community } from '@/shared/api/community';
+import { communityApi } from '@/shared/api/community';
 import dayjs from 'dayjs';
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
 import { useBoardQuery } from '@/shared/hooks/queryKey';

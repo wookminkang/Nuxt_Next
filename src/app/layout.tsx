@@ -1,11 +1,15 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import QueryProvider from '@/providers/query-provider';
+import { ToastBox } from '@/shared/components/ToastBox';
+import { UIAlert } from '@/shared/components/dialog/UIAlert';
+import { UIConfirm } from '@/shared/components/dialog/UIConfirm';
+import { UIToast } from '@/shared/components/dialog/UIToast';
 
 
 export const metadata: Metadata = {
-  title: '유니밸리 CC',
-  description: '자연과 조화로운 고품격 컨트리 클럽, 유니밸리 CC',
+  title: '일라이트 클럽',
+  description: '일라이트 클럽',
 };
 
 export default function RootLayout({
@@ -17,6 +21,10 @@ export default function RootLayout({
     <html lang="ko">
       <body className="antialiased">
         <QueryProvider>{children}</QueryProvider>
+        <ToastBox />
+        <UIAlert />
+        <UIConfirm />
+        <UIToast />
       </body>
     </html>
   );

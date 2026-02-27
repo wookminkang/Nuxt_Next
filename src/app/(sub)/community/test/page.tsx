@@ -1,13 +1,13 @@
 import React from 'react';
 import { Search, Calendar } from 'lucide-react'; // 아이콘 라이브러리 예시
 import { SearchBar } from '@/shared/components/community/SearchBar';
-import { community } from '@/shared/api/community';
+import { communityApi } from '@/shared/api/community';
 
 const NoticePage = async ({ searchParams }: { searchParams: Promise<{ text: string }> }) => {
   const searchParams_keyword = await searchParams;
 
   console.log(`searchParams_keyword`, searchParams_keyword);
-  const data = await community.getTestList(searchParams_keyword);
+  const { data } = await communityApi.notice(searchParams_keyword);
   console.log(`notice page data`, data);
 
   return (

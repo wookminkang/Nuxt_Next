@@ -1,10 +1,33 @@
-import { adminApi } from "@/shared/api/admin";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+
+export const dynamic = 'force-dynamic';
 import { UserTrendChartSection } from "@/shared/components/admin/UserTrendChartSection";
 import { GenderRatioChart } from "@/shared/components/admin/GenderRatioChart";
 import { StorageChart } from "@/shared/components/admin/StorageChart";
 
 export default async function AdminPage() {
-  const { data } = await adminApi.getDashboard();
+  // 서버사이드에서 쿠키로 토큰 확인
+  const cookieStore = await cookies();
+  const token = cookieStore.get('access_token')?.value;
+  //if (!token) redirect('/login');
+
+  let data: any = null;
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? '';
+    const res = await fetch(`${baseUrl}/hp/api/dashboard?period=0`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+    const json = await res.json();
+    if (!res.ok || json.result === false) redirect('/login');
+    data = json.data;
+  } catch {
+    //redirect('/login');
+  }
   // console.log(`res =>`, data);
 
   return (

@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import axiosInstance from '@/shared/api/axios-instance';
+import http from '@/shared/utils/http';
 
 export const usePosts = () => {
   return useQuery({
     queryKey: ['posts'],
     queryFn: async () => {
-      const { data } = await axiosInstance.get('/posts');
+      const { data } = await http.instance().get('/posts');
       return data;
     },
   });

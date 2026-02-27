@@ -89,9 +89,10 @@ function BoardSearch({ className }: BoardSearchProps) {
             <Calendar
               initialFocus
               mode="range"
+              required={false}
               defaultMonth={date?.from}
               selected={date}
-              onSelect={setDate}
+              onSelect={(range) => range && setDate(range)}
               numberOfMonths={2}
               locale={ko}
             />

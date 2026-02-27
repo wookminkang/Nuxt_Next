@@ -1,10 +1,8 @@
-import api from "@/shared/utils/http";
+import http from '@/shared/utils/http';
 
+// 클라이언트 컴포넌트에서 사용하는 admin API (토큰은 http 인터셉터에서 자동 처리)
 export const adminClientApi = {
-  getDashboardPeriods: async (period: number) => {
-    console.log(`period =>`, period);
-    const res = await api.get(`/hp/api/dashboard/periods?period=${period}`).then(res => res.data);
-    console.log(`res =>`, res);
-    return res
-  }
-}
+  getDashboardPeriods(period: number) {
+    return http.read('/hp/api/dashboard/periods', { period });
+  },
+};

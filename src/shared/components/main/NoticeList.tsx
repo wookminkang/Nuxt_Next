@@ -1,4 +1,4 @@
-import { community } from '@/shared/api/community';
+import { communityApi } from '@/shared/api/community';
 import dayjs from 'dayjs';
 import Link from 'next/link';
 
@@ -46,7 +46,7 @@ type NOTICE_ITEM = {
 
 export const NoticeList = async () => {
   try {
-    const noticeList = await community.getMainNoticeList();
+    const { data: noticeList } = await communityApi.notice({ post: true });
     return (
 
       <div className="bg-white rounded-2xl w-full overflow-hidden px-10 py-10">

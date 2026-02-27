@@ -1,7 +1,7 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { community } from '@/shared/api/community';
+import { communityApi } from '@/shared/api/community';
 import { initQueryKey } from '@/shared/utils/queryKet';
 import { Skeleton } from '@/components/ui/skeleton';
 import Image from 'next/image';
@@ -14,7 +14,7 @@ import Link from 'next/link';
 export const EventList = () => { 
   const { data: eventList, isLoading } = useQuery({
     queryKey: initQueryKey.list('Event'),
-    queryFn: () => community.getEventList({ page: 0, size: 10, post: true }),
+    queryFn: () => communityApi.event({ page: 0, size: 10, post: true }).then(res => res.data),
     staleTime: 1000 * 10 * 1,
     gcTime: 1000 * 60 * 1,
     refetchOnWindowFocus: true,

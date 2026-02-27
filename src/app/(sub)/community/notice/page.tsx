@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { BoardList } from '@/shared/components/community/BoardList';
 import { BoardSearch } from '@/shared/components/community/BoardSearch';
 
@@ -18,7 +19,9 @@ export default async function CommunityNoticePage({
       <h1>Community Notice</h1>
 
       {/* 검색 */}
-      <BoardSearch />
+      <Suspense fallback={null}>
+        <BoardSearch />
+      </Suspense>
       {/* 리스트 */}
       <BoardList searchParams={searchParams} />
     </div>

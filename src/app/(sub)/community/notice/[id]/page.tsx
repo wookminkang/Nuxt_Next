@@ -1,5 +1,5 @@
 
-import { community } from '@/shared/api/community';
+import { communityApi } from '@/shared/api/community';
 import { cn } from '@/lib/utils';
 import { MoveLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -10,7 +10,7 @@ import { Separator } from '@/components/ui/separator';
 
 export default async function CommunityNoticeDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const noticeDetail = await community.getNoticeDetail(id);
+  const { data: noticeDetail } = await communityApi.noticeDetail(id);
 
 
   return (

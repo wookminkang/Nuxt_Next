@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { BoardList } from '@/shared/components/community/BoardList';
 import { BoardSearch } from '@/shared/components/community/BoardSearch';
 
@@ -17,7 +18,9 @@ export default function CommunityEventPage({
     <div>
       <h1>Community Event</h1>
 
-      <BoardSearch />
+      <Suspense fallback={null}>
+        <BoardSearch />
+      </Suspense>
       <BoardList searchParams={searchParams} />
     </div>
   );
