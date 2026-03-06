@@ -11,12 +11,13 @@ export default function QueryProvider({ children }: { children: React.ReactNode 
         defaultOptions: {
           queries: {
             staleTime: 60 * 1000,
+            gcTime: 80 * 1000,
           },
         },
       })
   );
 
   return <QueryClientProvider client={queryClient}>{children}
-    {/* <ReactQueryDevtools initialIsOpen={true} /> */}
+    <ReactQueryDevtools initialIsOpen={true} />
   </QueryClientProvider>;
 }

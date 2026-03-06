@@ -7,8 +7,8 @@ export const commonApi = {
   getCodes(code: string) {
     return http.read(baseUrl + `/common/system-code/${gCode}`, { code });
   },
-  getMenus() {
-    return http.read(baseUrl + `/menus/club/${gCode}`);
+  getMenus(site: string = 'G') {
+    return http.read(baseUrl + `/menus/club/${gCode}`, { site });
   },
   getView() {
     return http.update(baseUrl + `/dashboard/increment/club/${gCode}`);

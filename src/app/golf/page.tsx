@@ -1,5 +1,5 @@
-import HeaderMain from '@/components/main/HeaderMain';
-import FooterMain from '@/components/main/FooterMain';
+import GolfHeader from '@/components/layouts/GolfHeader';
+import GolfFooter from '@/components/layouts/GolfFooter';
 import Image from 'next/image';
 
 
@@ -16,7 +16,7 @@ import { Resvation } from '@/components/main/Resvation';
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
-      <HeaderMain />
+      <GolfHeader />
 
       <main className='bg-[#f3f4f6]'>
         <Resvation />
@@ -36,7 +36,7 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <FooterMain className='mt-10' />
+      <GolfFooter className='mt-10' />
     </div>
   );
 }
