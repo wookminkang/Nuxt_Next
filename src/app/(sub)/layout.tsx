@@ -1,6 +1,6 @@
-import { SideBar } from "@/shared/components/SideBar";
-import { SubHeader } from "@/shared/components/subHeader";
-import { SubFooter } from "@/shared/components/SubFooter";
+import { SideBar } from "@/components/common/SideBar";
+import { SubHeader } from "@/components/common/subHeader";
+import { SubFooter } from "@/components/common/SubFooter";
 
 export default function ClubLayout({ children }: { children: React.ReactNode }) {
   return (

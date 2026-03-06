@@ -2,9 +2,9 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export const dynamic = 'force-dynamic';
-import { UserTrendChartSection } from "@/shared/components/admin/UserTrendChartSection";
-import { GenderRatioChart } from "@/shared/components/admin/GenderRatioChart";
-import { StorageChart } from "@/shared/components/admin/StorageChart";
+import { UserTrendChartSection } from "@/components/admin/UserTrendChartSection";
+import { GenderRatioChart } from "@/components/admin/GenderRatioChart";
+import { StorageChart } from "@/components/admin/StorageChart";
 
 export default async function AdminPage() {
   // 서버사이드에서 쿠키로 토큰 확인

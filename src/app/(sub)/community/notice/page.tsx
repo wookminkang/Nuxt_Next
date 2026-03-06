@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
-import { BoardList } from '@/shared/components/community/BoardList';
-import { BoardSearch } from '@/shared/components/community/BoardSearch';
+import { BoardList } from '@/components/community/BoardList';
+import { BoardSearch } from '@/components/community/BoardSearch';
 
 type BOARD_PARMAS = {
   date?: string;

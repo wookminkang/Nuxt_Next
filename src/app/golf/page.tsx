@@ -1,17 +1,17 @@
-import HeaderMain from '@/features/main/components/HeaderMain';
-import FooterMain from '@/features/main/components/FooterMain';
+import HeaderMain from '@/components/main/HeaderMain';
+import FooterMain from '@/components/main/FooterMain';
 import Image from 'next/image';
 
 
 import { Button } from '@/components/ui/button';
 import { ArrowRightIcon } from 'lucide-react';
-import { Map } from '@/shared/components/Map';
-import { EventList } from '@/shared/components/main/EventList';
-import { Course } from '@/shared/components/main/Course';
-import { Location } from '@/shared/components/main/Location';
-import { ClubIntro } from '@/shared/components/main/ClubIntro';
-import { NoticeList } from '@/shared/components/main/NoticeList';
-import { Resvation } from '@/shared/components/main/Resvation';
+import { Map } from '@/components/common/Map';
+import { EventList } from '@/components/main/EventList';
+import { Course } from '@/components/main/Course';
+import { Location } from '@/components/main/Location';
+import { ClubIntro } from '@/components/main/ClubIntro';
+import { NoticeList } from '@/components/main/NoticeList';
+import { Resvation } from '@/components/main/Resvation';
 
 export default function Home() {
   return (
@@ -23,7 +23,7 @@ export default function Home() {
 
         <section className="mt-10 w-full max-w-[1440px] mx-auto">
           <div className="flex flex-col gap-8">
-            {/* <EventList />
+            <EventList />
 
             <Course />
 
@@ -31,7 +31,7 @@ export default function Home() {
 
             <ClubIntro />
 
-            <NoticeList /> */}
+            <NoticeList />
 
           </div>
         </section>

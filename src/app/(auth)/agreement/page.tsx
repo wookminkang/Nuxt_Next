@@ -1,4 +1,4 @@
-import { Agreement } from "@/shared/components/auth/Agreement";
+import { Agreement } from "@/components/auth/Agreement";
 
 export default function AgreementPage() {
   return (

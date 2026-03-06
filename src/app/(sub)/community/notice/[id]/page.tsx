@@ -1,5 +1,5 @@
 
-import { communityApi } from '@/shared/api/community';
+import { communityApi } from '@/api/community';
 import { cn } from '@/lib/utils';
 import { MoveLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';

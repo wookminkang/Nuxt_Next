@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import QueryProvider from '@/providers/query-provider';
-import { ToastBox } from '@/shared/components/ToastBox';
-import { UIAlert } from '@/shared/components/dialog/UIAlert';
-import { UIConfirm } from '@/shared/components/dialog/UIConfirm';
-import { UIToast } from '@/shared/components/dialog/UIToast';
+import { ToastBox } from '@/components/common/ToastBox';
+import { UIAlert } from '@/components/dialog/UIAlert';
+import { UIConfirm } from '@/components/dialog/UIConfirm';
+import { UIToast } from '@/components/dialog/UIToast';
 
 
 export const metadata: Metadata = {
